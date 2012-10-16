@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h2>Status</h2>
+	{% if reg_send_mail %}
+	<div class="common_message">Congratulations ! An activation mail with your password is sent to <b>{{ email }}</b> , please log in the email and complete the registration .  <a href="/">HOME</a></div> 
+	{% endif %}
+    
+    {% if account_activate %}
+        {% if activated %}
+            <div class="common_message">Already activated . <a href="/">HOME</a></div> 
+        {% else %}
+            {% if success %}<div class="common_message">Success ! you can enjoy yookoyoo now ! .  <a href="/">HOME</a></div> {% endif %}
+            {% if not success %}<div class="common_message">Failed, Please contact us.  <a href="/">HOME</a></div> {% endif %}
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

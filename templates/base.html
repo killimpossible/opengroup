@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>{% block title %}{% endblock %}</title>
+		
+		<link rel="stylesheet" type="text/css" href="/site_media/css/base.css" />
+		{% block css %}{% endblock %}
+		
+		{% block js %}{% endblock %}
+	
+	</head>
+
+	<body>
+	
+	<div id="head">
+		<div class="head_img">
+			<a href="/"><img src="/site_media/images/test.gif" width="360px" height="100px"/></a>
+		</div>
+		
+		<div class="head_words">
+		{% if user.is_authenticated %}
+			<div class="nav"><a href="/log_out/">LOGOUT</a></div>
+		{% else %}
+			<div class="nav"><a href="/sign_up/">JOIN</a></div>
+			<div class="nav"><a href="/log_in/">LOGIN</a></div>
+		{% endif %}
+		</div>
+		
+		<form id="search" action="/search/" method="GET" style="display:inline-block">
+			<table>
+				<tbody>
+					<tr>
+						<td>
+							<table>
+								<tr>
+									<td>
+										<input type="text" name="q" title="search"></input>
+							          	<select id="search_type" name="search_type" value="0" style="width:80px">
+								           	<option value="0">groups</option>
+								           	<option value="1">topics</option>
+							          	</select>
+										<input type="submit" value="Search" name="sbtn">
+									</td>
+								</tr>
+							</table>						
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+			
+	</div>
+	
+	<div id="container">
+	<div id="nav-wrapper">
+		<div class="nav"><a href="/latest_topics/">Latest Topics</a></div>
+		<div class="nav"><a href="/hottest_topics/">Hottest Topics</a></div>
+		<div class="nav"><a href="/latest_groups/">Latest Groups</a></div>
+		<div class="nav"><a href="/hottest_groups/">Hottest Groups</a></div>
+		<div class="nav"><a href="/user_center/">User Center</a></div>
+	</div>
+		{% block main %}{% endblock %}
+	</div>
+	
+	</body>
+
+</html>

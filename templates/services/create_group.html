@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h2>Create a group</h2>
+    {% if err_message %}
+        <div class="err_message">{{ err_message }}</div>
+    {% endif %}
+    
+	<form id="reg_form" action="/groups/create_group/" method="POST">
+		<table class="table_style">
+		<thead>
+			<tr>
+				<th style="text-align:center;">group name</th>
+				<th style="text-align:center;">group description</th>
+				<th style="text-align:center;">open or private ?</th>
+				<th style="text-align:center;">member join need check ?</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center;"><input type="text" name="group_name" /></td>
+				<td style="text-align:center;"><textarea name="group_description" cols="60" rows="10" id="group_description"></textarea></td>
+				<td style="text-align:center;">
+				<div>
+					<div style="float:left;"><input type="radio" name="is_open" value='0' checked />OPEN</div>
+					<div style="float:left;"><input type="radio" name="is_open" value='1' />PRIVATE</div>
+				</div>
+				</td>
+				<td style="text-align:center;">
+				<div>
+					<div style="float:left;"><input type="radio" name="mem_join" value='0' checked />No</div>
+					<div style="float:left;"><input type="radio" name="mem_join" value='1' />Yes</div>
+				</div>
+				</td>
+			</tr>
+		</tbody>
+		</table>
+		
+		<div style="text-align:center;"><input type="submit" name="sub" value="OK, create the group !" /></div>
+	</form>
+{% endblock %}

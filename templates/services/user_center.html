@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+{% load main_filters %}
+<div><h2><a href="/groups/create_group/">Create a group</a></h2></div>
+
+<h2>Groups I joined:</h2>
+<table class="table_style">
+
+	<tr> 
+		<th>group</th>
+		<th>creator</th>
+		<th>joined at</th>
+	</tr>
+
+	{% for rel in groups_joined %}
+		<tr>
+			<td style="text-align:left;width:50%;">
+				<a href="/groups/{{ rel.group.id }}/">{{ rel.group.name|limit:30 }}</a>
+			</td>
+			<td style="width:30%">
+				<a href="#">{{ rel.group.creator.username|limit:20 }}</a>
+			</td>
+			<td style="width:20%">{{ rel.create_time|date:"F j, Y G:i:s" }}</td>
+		</tr>
+	{% endfor %}
+		
+	<div style="clear:both;"></div>   
+</table> 
+
+<h2>Groups I created:</h2>
+<table class="table_style">
+
+	<tr> 
+		<th>group</th>
+		<th>creator</th>
+		<th>joined at</th>
+	</tr>
+
+	{% for rel in groups_my %}
+		<tr>
+			<td style="text-align:left;width:50%;">
+				<a href="/groups/{{ rel.group.id }}/">{{ rel.group.name|limit:30 }}</a>
+			</td>
+			<td style="width:30%">
+				<a href="#">{{ rel.group.creator.username|limit:20 }}</a>
+			</td>
+			<td style="width:20%">{{ rel.create_time|date:"F j, Y G:i:s" }}</td>
+		</tr>
+	{% endfor %}
+		
+	<div style="clear:both;"></div>   
+</table>
+
+{% endblock %}

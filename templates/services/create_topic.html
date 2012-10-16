@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block main %}
+	<h2>Create a topic</h2>
+
+	<form action="/groups/{{ group.id }}/create_topic/" method="POST">
+		<table class="table_style">
+		  <tr>
+		    <td>topic name</td>
+		    <td><input type="text" value="" maxlength="100" size="50" name="topic_name"></td>
+		  </tr>
+		  <tr>
+		    <td>topic content</td>
+		    <td><textarea cols="55" rows="20" name="topic_content"></textarea></td>
+		  </tr>
+		  <tr>
+		  	<td></td>
+		  	<td><input type="submit" value="Ok, create the topic !" name="rev_submit"></td>
+		  </tr>
+		</table>
+	</form>
+{% endblock %}

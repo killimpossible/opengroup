@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block main %}
+	<h2>Login</h2>
+    {% if err_message %}
+        <div class="err_message">{{ err_message }}</div>
+    {% endif %}
+    <div style="padding:0 20px;"></div>
+	<form id="reg_form" action="/log_in/" method="POST">
+		<table class="table_style">
+		<thead>
+			<tr>
+				<th>email</th>
+				<th>password</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="text" name="email" /></td>
+				<td><input type="password" name="password" /></td>
+			</tr>
+		</tbody>
+		</table>
+		<input type="hidden" name="next" value="{{ next }}" />
+		<div class="m_h"><input type="submit" name="sub" value="OK, Log me in !" /> --&gt<a href="/sign_up/">Join !</a></div>
+	</form>
+{% endblock %}

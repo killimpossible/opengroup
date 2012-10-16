@@ -1,0 +1,47 @@
+* {padding:0;margin:0;line-height:18px;}
+a {background-color:#EFEFEF;padding:0 3px;text-decoration:none;color:#036;}
+h3, h2 {margin:20px 0px;padding-left:10px;color:#99CCFF;line-height:24px;display:inline-block;}
+
+#head {margin:0 auto;padding:18px 0 15px;width:960px;display:block;}
+	.head_img {width:360px;height:100px;display:inline;}
+	.head_words {float: right;padding: 41px 0px 0px; display: inline-block;}
+#container{width:960px;  margin:0 auto 50px auto;font-family:Georgia, "Times New Roman", Times, serif;font-size:14px;}
+#nav-wrapper {clear:left;padding:6px 0px;background-color:#C9F2B9;line-height:25px;width:100%;display:inline-block;}
+	.nav {font-size:16px;padding:5px;text-align:center;display:inline;}
+
+.m_v {padding-top:10%;}
+.m_h {text-align:center;margin:30px 0px;}
+.common_message{text-align:center;color:green;}
+.err_message{text-align:center;color:red;}
+
+.table_style {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+th {
+    font: bold 14px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    color: #4f6b72;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align:center;
+    padding: 6px 6px 6px 12px;
+    background: #C9F2B9 ;
+}
+
+.table_style td {
+    background: #fff;
+    font-size:12px;
+    padding:12px;
+    color: #4f6b72;
+    text-align:center;
+}
+
+
+td.alt {
+    background: #F5FAFA;
+    color: #797268;
+}
+
+tr.alt td{background:#ecf6fc;}	

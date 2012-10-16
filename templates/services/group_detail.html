@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block css %}
+	<style type="text/css">
+		.intro{display:block;background-color:#C9F2B9;margin:20px 0px;}
+	</style>
+{% endblock %}
+
+{% block main %}
+<h2>{{ group.name }}</h2> ({% if not user.is_member %}<a href="/groups/{{ group.id }}/join_group/">Join group</a>{% else %}<a href="/groups/{{ group.id }}/with_draw/">Withdraw</a>{% endif %})
+
+
+			<div class="intro">{{ group.description }}</div>
+
+			<div style="float:right;"><a href="/groups/{{ group.id }}/create_topic/">create a topic</a></div>
+
+<h2>Topics in this group:</h2>
+
+{% if not topics %}
+	<h3>No topics now .</h3>
+{% else %}
+	<table class="table_style">
+	
+		{% for topic in topics %}
+			<tr>
+				<td style="text-align:left;width:60%;">
+					<a href="/groups/{{ group.id }}/topics/{{ topic.id }}/">{{ topic.name }}</a>
+					<hr />
+				</td>
+				<td style="width:10%">
+					{{ topic.creator.username }}
+				</td>
+				<td style="width:30%">{{ topic.create_time|date:"F j, Y G:i:s" }}</td>
+			</tr>
+		{% endfor %}
+			
+		<div style="clear:both;"></div>
+		
+	</table>
+{% endif %}
+
+{% endblock %}

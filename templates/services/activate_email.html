@@ -1,0 +1,11 @@
+<html>
+<head></head>
+<body>
+<b>{{ new_user.username }}:</b>
+<ul>This is your Yookoyoo account activation email, just click or copy the url below to your browser to activate your Yookoyoo account, enjoy it !</ul>
+<div>The password you input is : <b>{{ password }}</b></div>
+<div>
+<a href="http://127.0.0.1:8000/activate_account/?id={{ new_user.id }}&s_str={{ s_str }}">http://127.0.0.1:8000/activate_account/?id={{ new_user.id }}&s_str={{ s_str }}</a>
+</div>
+</body>
+</html>

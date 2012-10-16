@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block css %}
+	<style type="text/css">
+		.topic_info{color:green;}
+		.topic_content{display:block;background-color:#C9F2B9;margin:20px 0px;}
+		.replies_content{display:block;margin:20px 0px;}
+		.reply_area{display:block;margin:30px 0px;}
+	</style>
+{% endblock %}
+
+{% block main %}
+
+<h2>{{ topic.name }}</h2>
+<div class="topic_info">
+	--> Created by <strong>{{ topic.creator.username }}</strong> at <strong>{{ topic.create_time|date:"G:i:s F j, Y" }}</strong> From GROUP : <a href="/groups/{{ topic.group.id }}/"><strong>{{ topic.group.name }}</strong></a>
+</div>
+<div class="topic_content">
+	{{ topic.content }}
+</div>
+<h2>Replies to the topic:</h2>
+<div class="replies_content">
+
+{% if not replies %}
+	<h3>No replies now .</h3>
+{% else %}
+	<table class="table_style">
+	
+		{% for reply in replies %}
+			<tr>
+				<td style="text-align:left;width:60%;">
+					{{ reply.content }}
+					<hr />
+				</td>
+				<td style="width:10%">
+					{{ reply.creator.username }}
+				</td>
+				<td style="width:30%">{{ reply.create_time|date:"F j, Y G:i:s" }}</td>
+			</tr>
+		{% endfor %}
+			
+		<div style="clear:both;"></div>
+		
+	</table>
+{% endif %}
+
+<h2>Reply to the topic:</h2>
+{% if not user.is_member %}
+	<div class="reply_area">
+		<h4>You are not a member of <strong><a href="/groups/{{ topic.group.id }}/">{{ topic.group.name }}</a></strong>, so you cannot reply. just <strong><a href="/groups/{{ topic.group.id }}/">visit</a></strong> the group and join it to create topic and reply in this group.</h4>
+	</div>
+{% else %}
+	<div class="reply_area">
+		<form id="reply_form" action="/groups/{{ topic.group.id }}/topics/{{ topic.id }}/add_reply/" method="POST">
+			<textarea style="width:100%;height:180px;" name="reply_content"></textarea>
+			<div class="m_h"><input type="submit" value="OK, add reply !" /></div>
+		</form>
+	</div> 
+{% endif %}
+</div>
+
+{% endblock %}

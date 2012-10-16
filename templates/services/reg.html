@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <h2>Sign Up</h2>
+    {% if err_message %}
+        <div class="err_message">{{ err_message }}</div>
+    {% endif %}
+    
+	<form id="reg_form" action="/sign_up/" method="POST">
+		<table class="table_style">
+		<thead>
+			<tr>
+				<th>username(unique)</th>
+				<th>email</th>
+				<th>password</th>
+				<th><img onclick="this.setAttribute('src','/get_check_code_image/?nocache='+Math.random());" src="/get_check_code_image/" mce_src="/get_check_code_image/" alt="Auth-code"/></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="text" name="username" /></td>
+				<td><input type="text" name="email" /></td>
+				<td><input type="password" name="password" /></td>
+				<td><input type="text" name="auth_code" /></td>
+			</tr>
+		</tbody>
+		</table>
+		
+		<div class="m_h"><input type="submit" name="sub" value="OK, Sign me up !" /> --&gt<a href="/log_in/">Log me in !</a></div>
+	</form>
+{% endblock %}

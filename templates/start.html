@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h2>What are peoples discussing ?</h2>
+
+{% load main_filters %}
+
+<table class="table_style">
+
+	<tr> 
+		<th>topic</th>
+		<th>group</th>
+		<th>created at</th>
+	</tr>
+
+	{% for topic in latest_topics %}
+		<tr>
+			<td style="text-align:left;width:50%;">
+				<a href="/groups/{{ topic.group.id }}/topics/{{ topic.id }}/">{{ topic.name|limit:30 }}</a>
+			</td>
+			<td style="width:30%">
+				<a href="/groups/{{ topic.group.id }}/">{{ topic.group.name|limit:20 }}</a>
+			</td>
+			<td style="width:20%">{{ topic.create_time|date:"F j, Y G:i:s" }}</td>
+		</tr>
+	{% endfor %}
+		
+	<div style="clear:both;"></div> 
+	  
+</table> 
+
+{% endblock %}

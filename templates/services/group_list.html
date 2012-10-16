@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+{% load main_filters %}
+{% load pagination_tags %}
+
+<h2>Group_list</h2>
+<table class="table_style">
+
+	<tr> 
+		<th>group</th>
+		<th>creator</th>
+		<th>created at</th>
+	</tr>
+	{% autopaginate groups %}
+	{% for group in groups %}
+		<tr>
+			<td style="text-align:left;width:50%;">
+				<a href="/groups/{{ group.id }}/">{{ group.name|limit:30 }}</a>
+			</td>
+			<td style="width:30%">
+				<a href="#">{{ group.creator.username|limit:20 }}</a>
+			</td>
+			<td style="width:20%">{{ group.create_time|date:"F j, Y G:i:s" }}</td>
+		</tr>
+	{% endfor %}
+	{% paginate %}	
+	<div style="clear:both;"></div>   
+</table> 
+
+{% endblock %}
